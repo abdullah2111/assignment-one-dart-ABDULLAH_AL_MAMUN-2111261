@@ -6,13 +6,12 @@
 //    - Method: void processPayment(double amount)
 mixin Payable {
   double calculateSalary(double baseSalary, double bonus) {
-    // TODO: Calculate total salary (base + bonus)
-    return 0.0; // Placeholder - replace with actual implementation
+    return baseSalary + bonus;
   }
-  
+
   void processPayment(double amount) {
     // TODO: Process payment
-    // Add your implementation here
+    print("Payment of \$${amount} processed.");
   }
 }
 
@@ -21,7 +20,7 @@ mixin Payable {
 mixin Reportable {
   String generateReport(String employeeName, String department) {
     // TODO: Generate report
-    return ""; // Placeholder - replace with actual implementation
+    return "Monthly report for $employeeName in $department department";
   }
 }
 
@@ -33,12 +32,12 @@ abstract class Employee {
   String name;
   String id;
   String department;
-  
+
   Employee(this.name, this.id, this.department);
-  
+
   String getJobTitle();
   double getBaseSalary();
-  
+
   void displayInfo() {
     print("$name (ID: $id, Department: $department)");
     print("Job Title: ${getJobTitle()}");
@@ -52,25 +51,20 @@ abstract class Employee {
 //      - Override required methods
 class Manager extends Employee with Payable, Reportable {
   int teamSize;
-  
-  Manager(String name, String id, String department, this.teamSize) : super(name, id, department);
-  
+
+  Manager(String name, String id, String department, this.teamSize)
+      : super(name, id, department);
+
   @override
-  String getJobTitle() {
-    // TODO: Return manager job title
-    return ""; // Placeholder - replace with actual implementation
-  }
-  
+  String getJobTitle() => "Manager";
+
   @override
-  double getBaseSalary() {
-    // TODO: Return manager base salary
-    return 0.0; // Placeholder - replace with actual implementation
-  }
-  
+  double getBaseSalary() => 8000.0;
+
   @override
   void displayInfo() {
-    // TODO: Override to show manager-specific info
-    // Add your implementation here
+    super.displayInfo();
+    print("Team Size: $teamSize");
   }
 }
 
@@ -79,39 +73,44 @@ class Manager extends Employee with Payable, Reportable {
 //      - Override required methods
 class Developer extends Employee with Payable {
   String programmingLanguage;
-  
-  Developer(String name, String id, String department, this.programmingLanguage) : super(name, id, department);
-  
+
+  Developer(String name, String id, String department, this.programmingLanguage)
+      : super(name, id, department);
+
   @override
-  String getJobTitle() {
-    // TODO: Return developer job title
-    return ""; // Placeholder - replace with actual implementation
-  }
-  
+  String getJobTitle() => "Senior Developer";
+
   @override
-  double getBaseSalary() {
-    // TODO: Return developer base salary
-    return 0.0; // Placeholder - replace with actual implementation
-  }
-  
+  double getBaseSalary() => 6000.0;
+
   @override
   void displayInfo() {
-    // TODO: Override to show developer-specific info
-    // Add your implementation here
+    super.displayInfo();
+    print("Primary Language: $programmingLanguage");
   }
 }
 
 void main() {
-  // 5. Create employees and demonstrate:
-  //    - Salary calculation with bonus
-  //    - Payment processing
-  //    - Report generation (for managers)
-  //    - Display all employee information
-  
-  // TODO: Create employees
-  
-  // TODO: Demonstrate salary calculation with bonus
-  
-  // TODO: Display employee information
-  
+  // Create employees
+  final manager = Manager("John Smith", "M001", "IT", 6);
+  final dev = Developer("Alice Johnson", "D001", "IT", "Dart");
+
+  // --- Manager Section ---
+  print("=== Manager Details ===");
+  manager.displayInfo();
+  final mBaseSalary = manager.getBaseSalary();
+  final mTotalSalary = manager.calculateSalary(mBaseSalary, 1000.0);
+  print("Calculated Salary: $mTotalSalary");
+  manager.processPayment(mTotalSalary);
+  print("Report: ${manager.generateReport(manager.name, manager.department)}");
+
+  print(""); // spacer line
+
+  // --- Developer Section ---
+  print("=== Developer Details ===");
+  dev.displayInfo();
+  final dBaseSalary = dev.getBaseSalary();
+  final dTotalSalary = dev.calculateSalary(dBaseSalary, 500.0);
+  print("Calculated Salary: $dTotalSalary");
+  dev.processPayment(dTotalSalary);
 }
