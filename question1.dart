@@ -1,7 +1,7 @@
 // Question 1: Basic Data Types & Functions (Difficulty: 1/5) ⭐
 
 // 1. Create variables of different data types
-String name = "Shahriar"; // Initialized with your name
+String name = "Abdullah"; // Initialized with your name
 int age = 23; // Initialized with your age
 double height = 1.75; // Height in meters
 bool isStudent = true; // True if you are a student
@@ -30,7 +30,7 @@ String getGrade(int score) {
 
 void main() {
   // Initialize values
-  name = "Shahriar";
+  name = "Mamun";
   age = 23;
   height = 1.75; // meters
   isStudent = true;
