@@ -28,7 +28,7 @@ class BankAccount {
     if (amount <= 0) {
       print("Invalid withdrawal amount.");
     } else if (amount > balance) {
-      print("❌ Insufficient funds for $accountHolder. Withdrawal failed.");
+      print("Insufficient funds for $accountHolder. Withdrawal failed.");
     } else {
       balance -= amount;
       print("$accountHolder withdrew \$${amount.toStringAsFixed(2)}");

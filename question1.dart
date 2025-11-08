@@ -2,7 +2,7 @@
 
 // 1. Create variables of different data types
 String name = "Abdullah"; // Initialized with your name
-int age = 23; // Initialized with your age
+int age = 25; // Initialized with your age
 double height = 1.75; // Height in meters
 bool isStudent = true; // True if you are a student
 
