@@ -4,24 +4,24 @@ import 'dart:math';
 
 void main() {
   // 1. Create a List<String> of student names
-  List<String> studentNames = ["Alice", "Bob", "Charlie", "Diana", "Eve"];
+  var studentNames = <String>['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'];
 
   // 2. Create a Map<String, int> to store student scores
-  Map<String, int> studentScores = {};
+  var studentScores = <String, int>{};
 
   // 3. Use a for loop to assign random scores (60–100) to each student
-  Random random = Random();
-  for (String name in studentNames) {
-    int score = 60 + random.nextInt(41);
+  var random = Random();
+  for (var name in studentNames) {
+    var score = 60 + random.nextInt(41);
     studentScores[name] = score;
   }
 
   // 4. Find highest, lowest, and average scores
-  String highestStudent = "";
-  int highestScore = 0;
-  String lowestStudent = "";
-  int lowestScore = 100;
-  double totalScore = 0.0;
+  var highestStudent = '';
+  var highestScore = 0;
+  var lowestStudent = '';
+  var lowestScore = 100;
+  var totalScore = 0;
 
   studentScores.forEach((student, score) {
     if (score > highestScore) {
@@ -35,33 +35,33 @@ void main() {
     totalScore += score;
   });
 
-  double averageScore = totalScore / studentScores.length;
+  var averageScore = totalScore / studentScores.length;
 
-  print("Student Scores: $studentScores");
-  print("Highest Score: $highestStudent with $highestScore");
-  print("Lowest Score: $lowestStudent with $lowestScore");
-  print("Average Score: ${averageScore.toStringAsFixed(2)}");
+  print('Student Scores: $studentScores');
+  print('Highest Score: $highestStudent with $highestScore');
+  print('Lowest Score: $lowestStudent with $lowestScore');
+  print('Average Score: ${averageScore.toStringAsFixed(2)}');
 
   // 5. Categorize each student using switch
-  for (String student in studentNames) {
-    int score = studentScores[student] ?? 0;
-    String category = "";
+  for (var student in studentNames) {
+    var score = studentScores[student] ?? 0;
+    var category = '';
 
     switch (score ~/ 10) {
       case 10:
       case 9:
-        category = "Excellent";
+        category = 'Excellent';
         break;
       case 8:
-        category = "Good";
+        category = 'Good';
         break;
       case 7:
-        category = "Average";
+        category = 'Average';
         break;
       default:
-        category = "Needs Improvement";
+        category = 'Needs Improvement';
     }
 
-    print("$student: $score ($category)");
+    print('$student: $score ($category)');
   }
 }
